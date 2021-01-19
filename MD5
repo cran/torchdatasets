@@ -1,0 +1,14 @@
+28a90da0c0f2f6c733e8eec51812642d *DESCRIPTION
+d972c34302d7a5cd2a73cc7e0ff4993a *LICENSE
+d3645957b0c701a2750a17e27417f4fc *NAMESPACE
+740f9c66124a39b890bea3f09d15708a *R/bird-species.R
+7d093070a6a30261317f459d2ac13a75 *R/dogs-vs-cats.R
+23bd8c6697cd5d5a9e2ad478ac6aa6f3 *R/guess-the-correlation.R
+95568a916d4c12d442efd3cdd91c828c *README.md
+8c7588173881ff3486181c71a8c07729 *man/bird_species_dataset.Rd
+3174062037df76cc2e333b09e4c670a6 *man/dogs_vs_cats_dataset.Rd
+fc04d184a436218715e2bc484b1ed292 *man/guess_the_correlation_dataset.Rd
+c1bc7b4eb75fd00ef7ff02ebfef428b1 *tests/testthat.R
+d812b51e556fd3d0f0e208dd681ddf95 *tests/testthat/test-bird-species.R
+0a705cac99b8462cb1de015a3d640f76 *tests/testthat/test-dogs-vs-cats.R
+e51ef7973d2fdd92536a1aef4cbb84aa *tests/testthat/test-guess-the-correlation.R
