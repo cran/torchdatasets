@@ -6,7 +6,8 @@
 #'
 #' @param root path to the data location
 #' @param split string. 'train' or 'submission'
-#' @param transform function that receives a torch tensor and return another torch tensor, transformed.
+#' @param transform function that takes a torch tensor representing an image and return another tensor, transformed.
+#' @param target_transform function that takes a scalar torch tensor and returns another tensor, transformed.
 #' @param indexes set of integers for subsampling (e.g. 1:140000)
 #' @param download whether to download or not
 #'
@@ -19,27 +20,23 @@
 #' @export
 guess_the_correlation_dataset <- torch::dataset(
   "GuessTheCorrelation",
-  initialize = function(root, split = "train", transform = NULL, indexes = NULL, download = FALSE) {
+  initialize = function(root, split = "train", transform = NULL, target_transform = NULL, indexes = NULL, download = FALSE) {
 
     self$transform <- transform
+    self$target_transform <- target_transform
 
     # donwload ----------------------------------------------------------
-    data_path <- fs::path(root, "guess-the-correlation")
-
-    if (!fs::dir_exists(data_path) && download) {
-      fs::dir_create(data_path)
-      zip_path <- fs::path(data_path, "guess-the-correlation.zip")
-      download.file(
-        "https://storage.googleapis.com/torch-datasets/guess-the-correlation.zip",
-        destfile = zip_path
-      )
-      zip::unzip(zip_path, exdir = data_path)
-      zip::unzip(fs::path(data_path, "train_imgs.zip"), exdir = data_path)
-      zip::unzip(fs::path(data_path, "test_imgs.zip"), exdir = data_path)
-    }
-
-    if (!fs::dir_exists(data_path))
-      stop("No data found. Please use `download = TRUE`.")
+    data_path <- maybe_download(
+      root = root,
+      name = "guess-the-correlation",
+      url = "https://storage.googleapis.com/torch-datasets/guess-the-correlation.zip",
+      download = download,
+      extract_fun = function(temp, data_path) {
+        zip::unzip(temp, exdir = data_path)
+        zip::unzip(fs::path(data_path, "train_imgs.zip"), exdir = data_path)
+        zip::unzip(fs::path(data_path, "test_imgs.zip"), exdir = data_path)
+      }
+    )
 
     # variavel resposta -------------------------------------------------
 
@@ -55,18 +52,22 @@ guess_the_correlation_dataset <- torch::dataset(
   },
 
   .getitem = function(index) {
-    force(index)
-    sample <- self$images[index, ]
 
+    force(index)
+
+    sample <- self$images[index, ]
     id <- sample$id
-    y <- sample$corr
     x <- torchvision::base_loader(file.path(self$.path, paste0(sample$id, ".png")))
     x <- torchvision::transform_to_tensor(x) %>% torchvision::transform_rgb_to_grayscale()
 
     if (!is.null(self$transform))
       x <- self$transform(x)
 
-    return(list(x = x, y = torch::torch_scalar_tensor(y), id = id))
+    y <- torch::torch_scalar_tensor(sample$corr)
+    if (!is.null(self$target_transform))
+      y <- self$target_transform(y)
+
+    return(list(x = x, y = y, id = id))
   },
 
   .length = function() {
