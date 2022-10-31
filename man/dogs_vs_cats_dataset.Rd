@@ -4,17 +4,27 @@
 \alias{dogs_vs_cats_dataset}
 \title{Dog vs cats dataset}
 \usage{
-dogs_vs_cats_dataset(root, token = NULL, download = TRUE, ...)
+dogs_vs_cats_dataset(
+  root,
+  split = "train",
+  download = FALSE,
+  ...,
+  transform = NULL,
+  target_transform = NULL
+)
 }
 \arguments{
 \item{root}{path to the data location}
 
-\item{token}{a path to the json file obtained in Kaggle. See \href{https://pins.rstudio.com/reference/legacy_kaggle.html}{here}
-for additional info.}
+\item{split}{string. 'train' or 'submission'}
 
-\item{download}{wether to download or not}
+\item{download}{whether to download or not}
 
-\item{...}{other arguments passed to \code{\link[torchvision:image_folder_dataset]{torchvision::image_folder_dataset()}}.}
+\item{...}{Currently unused.}
+
+\item{transform}{function that takes a torch tensor representing an image and return another tensor, transformed.}
+
+\item{target_transform}{function that takes a scalar torch tensor and returns another tensor, transformed.}
 }
 \value{
 A \code{\link[torch:dataset]{torch::dataset()}} ready to be used with dataloaders.
@@ -29,4 +39,5 @@ dogs_cats <- dogs_vs_cats_dataset("./data", token = "path/to/kaggle.json",
                                   download = TRUE)
 length(dogs_cats)
 }
+
 }

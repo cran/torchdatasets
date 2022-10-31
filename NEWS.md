@@ -1,3 +1,8 @@
+# torchdatasets 0.2.0
+
+- Fixed issues with the dogs-vs-cats dataset. (#29)
+- Better handle the bird species dataset.
+
 # torchdatasets 0.1.0
 
 * Added the bank marketing dataset (#10, #11, #12, #13, @dkgaraujo)

@@ -30,6 +30,7 @@ maybe_download <- function(url, root, name, extract_fun, download) {
   if (!fs::dir_exists(data_path) && download) {
     tmp <- tempfile()
     download_file(url, tmp)
+    fs::dir_create(fs::path_dir(data_path), recurse = TRUE)
     extract_fun(tmp, data_path)
   }
 
@@ -37,4 +38,12 @@ maybe_download <- function(url, root, name, extract_fun, download) {
     stop("No data found. Please use `download = TRUE`.")
 
   data_path
+}
+
+unzip2 <- function(path, exdir) {
+  if (grepl("linux", R.version$os)) {
+    utils::unzip(path, exdir = exdir)
+  } else {
+    zip::unzip(path, exdir = exdir)
+  }
 }
