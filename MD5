@@ -1,15 +1,16 @@
-52e7eb09eb252e7d2160b1d9e0b14211 *DESCRIPTION
+006f3b5393f0c439816d12d8d1fe441f *DESCRIPTION
 d972c34302d7a5cd2a73cc7e0ff4993a *LICENSE
-2918f4f4efa8fdabf165539954f8502b *NAMESPACE
-e58b327d879ede7ea0f2603aaf48b4c0 *NEWS.md
+bcd4d779aca822f0fdff4ccee3bf4d35 *NAMESPACE
+a00fe3d0914ac7cdcc66a09aac802721 *NEWS.md
 4e8c2057a8e8f90a01f95094f9790ab4 *R/bank-marketing.R
 5dc383a3a623618abb7253b18ced3d42 *R/bird-species.R
 6111314d6f7d44b279efcb23f5550018 *R/cityscapes-pix2pix.R
-63c0d3deb64ff0ec3ee1689fa1f8b3e3 *R/dogs-vs-cats.R
+7236b03af91ca8084a79906e768e522e *R/dogs-vs-cats.R
 07dff887e9944ab01d8aab7ff534d382 *R/guess-the-correlation.R
 4d9d3a1e00a6aee74805806a7b27c3df *R/imdb.R
+9fb8d9f63a6a1797496d48604689c939 *R/oxford-flowers-dataset.R
 b1fa40135173610ba0bcf56ba243e346 *R/oxford-pet-dataset.R
-855d86e97c230ca19f1985374f8c6d3a *R/utils.R
+67de5f67b80896567594d5fefa0c7afc *R/utils.R
 a0fcbbf47342f47c9946c72ff0d0ff1b *README.md
 221421e24a129f951014cbea3eae5e37 *man/bank_marketing_dataset.Rd
 c3901d109221de557e6f73d22da18234 *man/bird_species_dataset.Rd
@@ -17,6 +18,7 @@ c3901d109221de557e6f73d22da18234 *man/bird_species_dataset.Rd
 4a660eab52370f1ccf3a67eafddbd859 *man/dogs_vs_cats_dataset.Rd
 586c09083489ba1ea434472229af62b8 *man/guess_the_correlation_dataset.Rd
 188f15f440ea7c2c8a38a9014745bb29 *man/imdb_dataset.Rd
+d8d4735475bb5c7ceda6efd4a7d85e23 *man/oxford_flowers102_dataset.Rd
 3528997fe2adead510f47a2defdc801f *man/oxford_pet_dataset.Rd
 c1bc7b4eb75fd00ef7ff02ebfef428b1 *tests/testthat.R
 6427e76af89f76637d9d4c2ae6cafbd7 *tests/testthat/helper-torchdatasets.R
@@ -26,4 +28,5 @@ f5e72db0f319a26ae2a4e052a2115d98 *tests/testthat/test-cityscapes-pix2pix.R
 90eefc75440dc338549e5e3187b3ed09 *tests/testthat/test-dogs-vs-cats.R
 11137db5c0a8e608c4f44885898ea87b *tests/testthat/test-guess-the-correlation.R
 10a8ad8558f8b6ae69abe50d52083f02 *tests/testthat/test-imdb.R
+6ce0de70f5d9c8fab59e1963d6695ff5 *tests/testthat/test-oxford-flowers-dataset.R
 0665e2aa9df09e8ca2d61a65a8fdb785 *tests/testthat/test-oxford-pet-dataset.R
