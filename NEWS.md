@@ -1,3 +1,5 @@
+# torchdatasets 0.3.1
+
 # torchdatasets 0.3.0
 
 - Added Oxford Flowers Dataset (#32)
